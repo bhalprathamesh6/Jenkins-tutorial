@@ -1,26 +1,26 @@
 
 pipeline {
-agent any
-parameters {
-string(name: 'PERSON' , defaultValue: 'Chrissy', description: 'say hello')
-choice(name: 'CHOICE' , choices: ['1','2','3','4'], description: 'pick')
-password(name: 'PASSWORD' , defaultValue: '1234', description: 'enter pass')
-}
+     agent any
+     parameters {
+    string(name: 'PERSON' , defaultValue: 'Prathamesh', description: 'says good job')
+    choice(name: 'CHOICE' , choices: ['1','2','3','4'], description: 'pick')
+    password(name: 'PASSWORD' , defaultValue: '0048728c', description: 'enter pass')
+    }
 stages {
-stage('name') {
-steps {
-echo "Hello ${params.PERSON}"
+  stage('name') {
+  steps {
+  echo "Hello ${params.PERSON}"
+  }
 }
+  stage('choice') {
+    steps {
+    echo "Choice ${params.CHOICE}"
+  }
 }
-stage('choice') {
-steps {
-echo "Choice ${params.CHOICE}"
-}
-}
-stage('password') {
-steps {
-echo "Password: ${params.PASSWORD}"
-}
-}
-}
+   stage('password') {
+    steps {
+    echo "Password: ${params.PASSWORD}"
+   }
+  }
+ }
 }
