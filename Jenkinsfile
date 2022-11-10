@@ -1,15 +1,25 @@
 pipeline {
-    agent any
-    stages {
-        stage("PRATHAM 1") {
-            steps {
-                build job: 'PRATHAM_TEST1', parameters: [string(name: 'PRATHAM', value: "${params.MYPARAM}")]
-            }
-        }
-        stage("PRATHAM 2") {
-            steps {
-                build job: 'PRATHAM_TEST2', parameters: [string(name: 'PRATHAM 2', value: "${params.MYPARAM}")]
-            }
-        }     
-    }
+        agent any
+        parameters {
+        string(name: 'PERSON' , defaultValue: 'Chrissy', description: 'say hello')
+        choice(name: 'CHOICE' , choices: ['1','2','3','4'], description: 'pick')
+        password(name: 'PASSWORD' , defaultValue: '1234', description: 'enter pass')
+       }
+stages {
+    stage('name') {
+    steps {
+    echo "Hello ${params.PERSON}"
+   }
+}
+    stage('choice') {
+    steps {
+    echo "Choice ${params.CHOICE}"
+  }
+}
+    stage('password') {
+    steps {
+    echo "Password: ${params.PASSWORD}"
+   }
+  }
+ }
 }
